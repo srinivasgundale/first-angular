@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -12,9 +12,11 @@ import {Component, Input} from '@angular/core';
       {{ os.id +" -"+os.name }}<br>
     }
     <div [contentEditable]="isEditable"></div><br>
-    <button (click)="clickButton()">Click Here {{ occupation }}</button>
+    <button (click)="clickButton()"  >Click Here {{ occupation }}</button>
+
   `,
   standalone: true,
+
 })
 
 
@@ -24,14 +26,21 @@ export class UserComponent {
   operatingSystems = [{id: 'win', name: 'Windows'}, {id: 'osx', name: 'MacOS'}, {id: 'linux', name: 'Linux'}];
   isEditable = true;
   clickButton() {
-   alert("Clicked "+ this.occupation);
+    this.addItemEvent.emit('🐢');
+   //alert("Clicked "+ this.occupation);
+   //this.addItem();
   }
   @Input() occupation = '';
+  @Output() addItemEvent = new EventEmitter<string>();
+  addItem() {
+    this.addItemEvent.emit('🐢');
+    console.log(this.addItemEvent);
+  }
 }
 
 @Component({
   selector: 'app-roots',
-  template: `<app-user occupation="Angular Developer" />`,
+  template: `<app-user occupation="Angular Developer"   />`,
   standalone: true,
   imports: [UserComponent],
 })
