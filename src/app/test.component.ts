@@ -6,14 +6,20 @@ import {Component} from '@angular/core';
     @if (isUserNameSet) {
     Username: {{ username }}
     } @else {
-    Username : 'Guest'
+    Username : 'Guest'<br>
+    }
+    @for (os of operatingSystems; track os.id) {
+      {{ os.id +" -"+os.name }}<br>
     }
   `,
   standalone: true,
 })
+
+
 export class UserComponent {
   username = 'youngTech';
   isUserNameSet = true;
+  operatingSystems = [{id: 'win', name: 'Windows'}, {id: 'osx', name: 'MacOS'}, {id: 'linux', name: 'Linux'}];
 }
 
 @Component({
