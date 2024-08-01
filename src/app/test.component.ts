@@ -11,6 +11,7 @@ import {Component} from '@angular/core';
     @for (os of operatingSystems; track os.id) {
       {{ os.id +" -"+os.name }}<br>
     }
+    <div [contentEditable]="isEditable"></div>
   `,
   standalone: true,
 })
@@ -20,6 +21,7 @@ export class UserComponent {
   username = 'youngTech';
   isUserNameSet = true;
   operatingSystems = [{id: 'win', name: 'Windows'}, {id: 'osx', name: 'MacOS'}, {id: 'linux', name: 'Linux'}];
+  isEditable = true;
 }
 
 @Component({
