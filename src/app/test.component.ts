@@ -11,7 +11,8 @@ import {Component} from '@angular/core';
     @for (os of operatingSystems; track os.id) {
       {{ os.id +" -"+os.name }}<br>
     }
-    <div [contentEditable]="isEditable"></div>
+    <div [contentEditable]="isEditable"></div><br>
+    <button (click)="clickButton()">Click Here</button>
   `,
   standalone: true,
 })
@@ -22,6 +23,9 @@ export class UserComponent {
   isUserNameSet = true;
   operatingSystems = [{id: 'win', name: 'Windows'}, {id: 'osx', name: 'MacOS'}, {id: 'linux', name: 'Linux'}];
   isEditable = true;
+  clickButton() {
+   alert("Clicked");
+  }
 }
 
 @Component({
