@@ -27,7 +27,9 @@
 
 <h2>Profile Form</h2>
 <p>Name: {{ profileForm.value.name }}</p>
-<p>Email: {{ profileForm.value.email }}</p>
+@if(profileForm.value.email) {
+<p>Email: {{ profileForm.value.email | star  }}</p>
+}
 <p> {{ userService.getCars() }} </p>
-<p> {{ display }} </p>
-<p> {{ displayTwo }}</p>
+<p> {{ display | uppercase  }} </p>
+<p> {{ displayTwo | lowercase  }}</p>
