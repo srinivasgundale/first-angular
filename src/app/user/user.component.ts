@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -8,6 +9,12 @@ import {FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } f
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+  display = ''
+  displayTwo = ''
+  constructor(private us: UserService) {
+    this.display = this.userService.getCars().join(' ⭐️ ');
+    this.displayTwo = this.us.getCars().join(' ⭐️ ');
+  }
   favoriteFramework = '';
   name=''
   showFramework() {
@@ -28,6 +35,7 @@ export class UserComponent {
       this.profileForm.value.name + ' | ' + this.profileForm.value.email
     );
   }
+  userService = inject(UserService);
 }
 
 
