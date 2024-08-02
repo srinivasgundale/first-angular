@@ -1,1 +1,30 @@
 <p>user works!</p>
+<label for="framework">
+    Favorite Framework:
+    <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+  </label>
+  <label for="name">
+    Name:
+    <input id="name" type="text" [(ngModel)]="name" />
+  </label>
+  <p>Name: {{ name }}</p>
+  <p>Framework: {{ favoriteFramework }}</p>
+  <button (click)="showFramework()">Show Framework</button>
+  <button (click)="showName()">Show Name</button>
+  <button (click)="showForm()">Show Foem value</button>
+
+  <form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+    <label>
+      Name
+      <input type="text" formControlName="name" />
+    </label>
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+
+<h2>Profile Form</h2>
+<p>Name: {{ profileForm.value.name }}</p>
+<p>Email: {{ profileForm.value.email }}</p>
