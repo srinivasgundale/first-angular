@@ -1,24 +1,19 @@
-// app.component.ts
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TodoListing } from './todo-listing.component';
-import { TodoListItem } from './todo-list-item.component';
-import { CalculatorService } from './calculator.service';
-import { AppsComponent } from './test.component';
+// src/app/app.component.ts
+import { Component } from '@angular/core';
+import { HeaderComponent } from './ui/header/header.component';
+import { FooterComponent } from './ui/footer/footer.component';
+import { LastValueFromConfig } from 'rxjs/internal/lastValueFrom';
+import { LayoutComponent } from './ui/layout/layout.component';
+import {RouterOutlet, RouterLink} from '@angular/router';
 @Component({
+
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, TodoListItem , TodoListing, AppsComponent ], // Import TodoList here
+  standalone : true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  imports : [HeaderComponent, FooterComponent, LayoutComponent, RouterOutlet, RouterLink]
+
 })
-
-
 export class AppComponent {
-  title = 'first-angular';
-  private calculatorService = inject(CalculatorService);
-  totalCost = 0;
-  updateCost(a: number, b: number) {
-    this.totalCost = this.calculatorService.add(a, b);
-  }
+  title = 'My Angular App';
 }
