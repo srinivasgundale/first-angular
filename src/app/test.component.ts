@@ -27,8 +27,8 @@ export class UserComponent {
   isEditable = true;
   clickButton() {
     this.addItemEvent.emit('🐢');
-   //alert("Clicked "+ this.occupation);
-   //this.addItem();
+   alert("Clicked "+ this.occupation);
+   this.addItem();
   }
   @Input() occupation = '';
   @Output() addItemEvent = new EventEmitter<string>();
