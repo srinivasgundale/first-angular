@@ -1,1 +1,12 @@
 <p>home works!</p>
+<h1>Product List</h1>
+<ul>
+<li *ngFor="let product of products" (click)="selectProduct(product)">
+  {{ product.title }}
+</li>
+</ul>
+<app-product-detail
+  [product]="selectedProduct"
+  (productClicked)="handleProductClick($event);"
+  (productHover)="validateProductClick($event)">
+</app-product-detail>
