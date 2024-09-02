@@ -38,4 +38,7 @@ export class HomeComponent {
     console.log("🚀 ~ HomeComponent ~ validateProductClick ~ selectedProductPrice:", this.selectedProductPrice)
 
   }
+  handleButtonClick(product:any) {
+    console.error(`Prodcut clicked ${product.title}`)
+  }
 }
